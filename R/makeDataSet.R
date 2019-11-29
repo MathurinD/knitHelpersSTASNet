@@ -6,10 +6,10 @@
 makeDataSet <- function(...) {
     data_sets = list(...)
     shared_conditions = Reduce(intersect, sapply(data_sets, colnames))
-    condition_codes = sapply(data_sets, function(dts){ dts %>% select(matches("^TR")) %>% unite("code", matches("TR")) })
     data_sets = lapply(data_sets, function(dd){
 	    		if ( dd %>% select(-shared_conditions) %>% ncol > 0 ) {
-	    			return(dd %>% filter_at(vars(-shared_conditions), all_vars(.==0)) %>% select(shared_conditions) %>% as.data.frame)
+				to_keep = dd %>% select(-shared_conditions) %>% select(matches("TR")) %>% mutate(ID=1:nrow(.)) %>% filter_at(vars(-ID), all_vars(.==0)) %>% pull(ID)
+				return( dd  %>% mutate(ID=1:nrow(.)) %>% filter(ID %in% to_keep) )
 			} else {
 				return( dd )
 			}
