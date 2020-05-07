@@ -2,6 +2,7 @@
 
 export(checkModel)
 export(checkModelSet)
+export(checkRefitModel)
 export(checkVariableParameters)
 export(compare_replicates)
 export(computeLFC)

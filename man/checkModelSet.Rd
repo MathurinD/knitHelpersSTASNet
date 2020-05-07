@@ -4,11 +4,23 @@
 \alias{checkModelSet}
 \title{Check if a ModelSet exists or create it}
 \usage{
-checkModelSet(fname, model_links, basal_file, data.stimulation,
-  data.variation = c(), nb_cores = 1, inits = 1000,
-  perform_plots = F, method = "geneticlhs",
-  unused_perturbations = c(), unused_readouts = c(), MIN_CV = 0.1,
-  DEFAULT_CV = 0.3, model_name = "default", data_space = "linear")
+checkModelSet(
+  fname,
+  model_links,
+  basal_file,
+  data.stimulation,
+  data.variation = c(),
+  nb_cores = 1,
+  inits = 1000,
+  perform_plots = F,
+  method = "geneticlhs",
+  unused_perturbations = c(),
+  unused_readouts = c(),
+  MIN_CV = 0.1,
+  DEFAULT_CV = 0.3,
+  model_name = "default",
+  data_space = "linear"
+)
 }
 \description{
 Check if a ModelSet exists or create it
