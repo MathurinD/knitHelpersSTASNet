@@ -76,3 +76,19 @@ checkVariableParameters <- function(vmodel_name, original_modelset, data.stimula
     print(paste("Best fit:", signif(model$bestfit, 5), ", Score=", signif(model$bestfitscore, 2)))
     return(model)
 }
+
+#' Perform and cache model extension or load it from cache
+#'
+#' All parameters except 'fname' correspond to the ones in suggestExtension
+#' @param fname Name for the saved file (without extension)
+#' @param print Provided for convenient copy-paste from suggestExtension lines, has no control here as the results will always be cached in a file.
+#' @param parallel Kept for backward compatibility, won't be used
+#' @export
+checkExtension <- function(fname, original_model, mc = 0, sample_range=c(10^(2:-1),0,-10^(-1:2)), padjust_method="bonferroni", parallel=TRUE, print = TRUE){
+    fname = paste0(knitr::opts_chunk$get()$cache.path, "/", fname, ".tsv")
+    if (file.exists(fname)) {
+        return(read.table(fname))
+    } else {
+        return(suggestExtension(original_model, mc = 1, sample_range=c(10^(2:-1),0,-10^(-1:2)), padjust_method="bonferroni", print = TRUE, fname))
+    }
+}
