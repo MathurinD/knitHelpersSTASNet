@@ -97,6 +97,7 @@ checkExtension <- function(fname, original_model, mc = 0, sample_range=c(10^(2:-
 #' Check cache for an existing save of the profile likelihood labelled 'fname'. Load it if it exists or perform profileLikelihood and save it if it doesn't.
 #' All arguments except 'fname' correspond to the ones of profileLikelihood
 #' @param fname Name for the saved file (without extension)
+#' @export
 checkProfileLikelihood <- function(fname, model_description, nb_points=10000, nb_cores=1) {
     fname = paste0(knitr::opts_chunk$get()$cache.path, "/", fname, ".rds")
     if (file.exists(fname)) {

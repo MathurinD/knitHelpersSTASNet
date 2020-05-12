@@ -3,6 +3,7 @@
 export(checkExtension)
 export(checkModel)
 export(checkModelSet)
+export(checkProfileLikelihood)
 export(checkRefitModel)
 export(checkVariableParameters)
 export(compare_replicates)
