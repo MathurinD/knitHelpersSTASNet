@@ -87,7 +87,7 @@ checkVariableParameters <- function(vmodel_name, original_modelset, data.stimula
 checkExtension <- function(fname, original_model, mc = 0, sample_range=c(10^(2:-1),0,-10^(-1:2)), padjust_method="bonferroni", parallel=TRUE, print = TRUE){
     fname = paste0(knitr::opts_chunk$get()$cache.path, "/", fname, ".tsv")
     if (file.exists(fname)) {
-        return(read.table(fname))
+        return(read.table(fname, header=TRUE))
     } else {
         return(suggestExtension(original_model, mc, sample_range, padjust_method, print=TRUE, fname))
     }
