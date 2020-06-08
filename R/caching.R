@@ -89,7 +89,7 @@ checkExtension <- function(fname, original_model, mc = 0, sample_range=c(10^(2:-
     if (file.exists(fname)) {
         return(read.table(fname, header=TRUE))
     } else {
-        return(suggestExtension(original_model, mc, sample_range, padjust_method, print=TRUE, fname))
+        return(suggestExtension(original_model=original_model, mc=mc, sample_range=sample_range, padjust_method=padjust_method, print=TRUE, fname=fname))
     }
 }
 #' Manage profile likelihood caching
