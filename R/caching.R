@@ -98,12 +98,12 @@ checkExtension <- function(fname, original_model, mc = 0, sample_range=c(10^(2:-
 #' All arguments except 'fname' correspond to the ones of profileLikelihood
 #' @param fname Name for the saved file (without extension)
 #' @export
-checkProfileLikelihood <- function(fname, model_description, nb_points=10000, nb_cores=1) {
+checkProfileLikelihood <- function(fname, model_description, nb_points=10000, nb_cores=1, const_params=numeric()) {
     fname = paste0(knitr::opts_chunk$get()$cache.path, "/", fname, ".rds")
     if (file.exists(fname)) {
         return(importProfiles(fname))
     } else {
-        pl = profileLikelihood(model_description, nb_points, nb_cores)
+        pl = profileLikelihood(model_description, nb_points, nb_cores, const_params)
         exportProfiles(pl, fname)
         return(pl)
     }
